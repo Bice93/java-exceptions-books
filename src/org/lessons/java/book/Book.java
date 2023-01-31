@@ -47,5 +47,11 @@ public class Book {
 	public void setEditor(String editor) {
 		this.editor = editor;
 	}
+
+	@Override
+	public String toString() {
+		return "Libro:\n title=" + title + ",\n numberPages=" + numberPages + ",\n author=" + author + ",\n editor=" + editor;
+	}
+	
 	
 }

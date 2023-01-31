@@ -7,20 +7,26 @@ public class Book {
 	private String author;
 	private String editor;
 	
-	public Book(String title, int numberPages, String author, String editor) {
-		
-		setTitle(title);
-		setNumberPages(numberPages);
-		setAuthor(author);
-		setEditor(editor);
+	public Book(String title, int numberPages, String author, String editor) throws Exception {
+
+		validateString(title);
+		validateNumber(numberPages);
+		validateString(author);
+		validateString(editor);
 		
 	}
+	
+	/*
+	 * Implementare i getter e setter di tutti gli attributi del libro gestendo anche in questo caso 
+	 * eventuali errori di dati non corretti (che generano quindi eccezione).
+	 */
 	
 	public String getTitle() {
 		return title;
 	}
 	
-	public void setTitle(String title) {
+	public void setTitle(String title) throws Exception {
+		validateString(title);
 		this.title = title;
 	}
 	
@@ -28,7 +34,8 @@ public class Book {
 		return numberPages;
 	}
 	
-	public void setNumberPages(int numberPages) {
+	public void setNumberPages(int numberPages) throws Exception{
+		validateNumber(numberPages);
 		this.numberPages = numberPages;
 	}
 	
@@ -36,7 +43,8 @@ public class Book {
 		return author;
 	}
 	
-	public void setAuthor(String author) {
+	public void setAuthor(String author) throws Exception {
+		validateString(author);
 		this.author = author;
 	}
 	
@@ -44,8 +52,21 @@ public class Book {
 		return editor;
 	}
 	
-	public void setEditor(String editor) {
+	public void setEditor(String editor) throws Exception {
+		validateString(editor);
 		this.editor = editor;
+	}
+	
+	public void validateString(String inputString) throws Exception {
+		if (inputString.isEmpty()) {
+			throw new Exception("Inserire quello che ti viene richiesto!");
+		}
+	}
+	
+	public void validateNumber (int inputNumber) throws Exception {
+		if  (inputNumber <= 0) {
+			throw new Exception("Il libro deve contenere almeno una pagina!");
+		}
 	}
 
 	@Override

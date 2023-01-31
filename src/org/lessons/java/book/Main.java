@@ -17,23 +17,48 @@ public class Main {
 			Lo fa per il numero di elementi previsti nell’array.
 		*/
 		
+		/*
+		 * Quando vengono inseriti i dati, verificare che siano corretti 
+		 * (es. non accettare titolo o autore o editore vuoto, numero pagine ≤ 0). 
+		 * Se ci sono errori, lanciare un’eccezione e gestirla mostrando a video il tipo di errore.
+		 */
+		
 		for (int i = 0; i < library.length; i++) {
+
 			Scanner s = new Scanner(System.in);
+
 			System.out.println("Inserisci il titolo del libro");
-			title = s.nextLine();
+			title = s.nextLine().trim();
 			
 			System.out.println("Inserisci il numero di pagine");
-			numberPages = Integer.parseInt(s.nextLine());
+			try {
+				numberPages = Integer.parseInt(s.nextLine());
+				
+			} catch (Exception e){
+				numberPages= 0;
+				System.out.println("Errore sul formato del numero pagina");
+				return;
+			}
 			
 			System.out.println("Inserisci il nome dell'autore");
-			author = s.nextLine();
+			author = s.nextLine().trim();
 			
 			System.out.println("Inserisci il nome dell'editore");
-			editor = s.nextLine();
+			editor = s.nextLine().trim();
 			
-			library[i]= new Book(title, numberPages, author, editor);
+			//Book book;
+			try {
+				Book book = new Book(title, numberPages, author, editor);
+				library[i]= book;
+				
+			} catch (Exception e) {
+				System.out.println("Si è verificato un errore! " + e.getMessage());
+				return;
+			} finally {
+				
+				s.close();				
+			}
 			
-			s.close();
 		}
 		
 		for (int i = 0; i < library.length; i++) {

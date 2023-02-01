@@ -16,6 +16,7 @@ public class Main {
 			istanzia un nuovo oggetto della classe Book e lo inserisce nell’array.
 			Lo fa per il numero di elementi previsti nell’array.
 		*/
+		Scanner s = new Scanner(System.in);
 		
 		/*
 		 * Quando vengono inseriti i dati, verificare che siano corretti 
@@ -24,8 +25,6 @@ public class Main {
 		 */
 		
 		for (int i = 0; i < library.length; i++) {
-
-			Scanner s = new Scanner(System.in);
 
 			System.out.println("Inserisci il titolo del libro");
 			title = s.nextLine().trim();
@@ -54,17 +53,16 @@ public class Main {
 			} catch (Exception e) {
 				System.out.println("Si è verificato un errore! " + e.getMessage());
 				return;
-			} finally {
-				
-				s.close();				
 			}
 			
 		}
 		
 		for (int i = 0; i < library.length; i++) {
 			System.out.println(library[i].toString() + "\n");
-		}	
+		}
+		
 
+		s.close();	
 	}
 
 }

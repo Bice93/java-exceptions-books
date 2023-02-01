@@ -8,11 +8,11 @@ public class Book {
 	private String editor;
 	
 	public Book(String title, int numberPages, String author, String editor) throws Exception {
-
-		validateString(title);
-		validateNumber(numberPages);
-		validateString(author);
-		validateString(editor);
+		
+		setTitle(title);
+		setNumberPages(numberPages);
+		setAuthor(author);
+		setEditor(editor);
 		
 	}
 	
@@ -64,7 +64,7 @@ public class Book {
 	}
 	
 	public void validateNumber (int inputNumber) throws Exception {
-		if  (inputNumber <= 0) {
+		if  (inputNumber <= 0){
 			throw new Exception("Il libro deve contenere almeno una pagina!");
 		}
 	}
